@@ -14,7 +14,7 @@ class Player {
         this.health = health;
         this.strength = strength;
         this.attack = attack;
-        this.diceOutput = Random.nextInt(6)+1;
+        this.diceOutput = new Random().nextInt(6)+1;
     }
 
     //Define getters for private fields
