@@ -1,27 +1,39 @@
 //This class represents battle ground for the Magical Arena
-class Battle{
+class Battle {
 
-    //Players can perform battle in FCFS manner
-    public void Battle(Queue<Player> players){
+    public void Battle(ArrayList<Player> players) {
 
-        //Check if Magical Arena has at least two players
-        if(players.size()<1) {
-            System.out.println("Insuccifient Players");
-            return;
-        }
+            //Check if Magical Arena has at least two players
+            if (players.size() < 1) {
+                System.out.println("Insuccifient Players");
+                return;
+            }
 
-        //Sort the queue on the basis of players health
-        Comparator<Player> scoreComparator = Comparator.comparingInt(Player::getHealth);
-        Collections.sort(players, scoreComparator);
+            //Initialize attacking and defending players
+            Comparator<Player> healthComparator = Comparator.comparingInt(Player::getHealth);
+            Collections.sort(players, healthComparator);
+            Player attacker = players.remove();
+            Player defender = players.remove();
 
-        //Initialize attacking and defending players
-        Player attacker = players.poll();
-        Player defender = players.poll();
+            //Start Battle
+            while (attacker.isAlive() && defender.isAlive()) {
 
-        //Start Battle
-        while(attacker.isAlive() && defender.isAlive()){
+                //Roll dices for attacker and defender
+                attacker.rollDice();
+                defender.rollDice();
 
-        }
+                //Find damage and set health of the defender
+                int damage = attacker.damageCreated() - defender.damageDefended();
+                defender.setHealth(damage);
+
+                //swap attacker and defender
+                swap(attacker, defender);
+            }
     }
 
+    void swap(Player p1, Player p2) {
+        Player temp = p1;
+        p1 = p2;
+        p2 = temp;
+    }
 }

@@ -44,9 +44,8 @@ class Player {
     }
 
     //Sets and returns new diceOutput value for both attacking and defending dice
-    int rollDice() {
+    void rollDice() {
         diceOutput = new Random().nextInt(6) + 1;
-        return diceOutput;
     }
 
     //Calculate the damage created by the current player
