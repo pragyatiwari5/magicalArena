@@ -9,12 +9,11 @@ class Player {
     private int attack;
     private int diceOutput;
 
-    //Parameterized constructor initialize a player
+    //Parameterized constructor to initialize a player
     public Player(int health, int strength, int attack) {
         this.health = health;
         this.strength = strength;
         this.attack = attack;
-        this.diceOutput = new Random().nextInt(6)+1;
     }
 
     //Define getters for private fields
@@ -30,8 +29,13 @@ class Player {
         return attack;
     }
 
-    public int getDiceOutput(){
+    public int getDiceOutput() {
         return diceOutput;
+    }
+
+    //Updates health of current player in case of damage
+    public void setHealth(int damage) {
+        health -= damage;
     }
 
     //Returns true if Player is Alive
@@ -39,4 +43,19 @@ class Player {
         return health > 0;
     }
 
+    //Sets and returns new diceOutput value for both attacking and defending dice
+    int rollDice() {
+        diceOutput = new Random().nextInt(6) + 1;
+        return diceOutput;
+    }
+
+    //Calculate the damage created by the current player
+    public int damageCreated() {
+        return attack * diceOutput;
+    }
+
+    //Calculate the damage defended by the current player
+    public int damageDefended() {
+        return strength * diceOutput;
+    }
 }
