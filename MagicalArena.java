@@ -3,14 +3,14 @@ package magicalArena;
 class MagicalArena {
     private Player winner;
 
-    public void findWinner(Player player1, Player player2) {
+    public void startCombat(Player player1, Player player2) {
         Player attacker = player1.getHealth() <= player2.getHealth() ? player1 : player2;
         Player defender = player1.getHealth() > player2.getHealth() ? player1 : player2;
-        winner = battle(attacker, defender);
+        winner = findWinner(attacker, defender);
         System.out.println("*** Winner is : " + winner.toString() + " ***");
     }
 
-    Player battle(Player attacker, Player defender) {
+    Player findWinner(Player attacker, Player defender) {
         while (attacker.isAlive() && defender.isAlive()) {
             attacker.rollDice();
             defender.rollDice();
@@ -25,5 +25,9 @@ class MagicalArena {
         }
         if (attacker.isAlive()) return attacker;
         else return defender;
+    }
+    
+    Player getWinner(){
+    return winner;
     }
 }
