@@ -26,8 +26,8 @@ class MagicalArena {
         if (attacker.isAlive()) return attacker;
         else return defender;
     }
-    
-    Player getWinner(){
-    return winner;
+
+    Player getWinner() {
+        return winner;
     }
 }
