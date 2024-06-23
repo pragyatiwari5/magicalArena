@@ -60,6 +60,7 @@ class Player {
         if (health < 0) health = 0;
     }
 
+    //Override toString method
     public String toString() {
         return this.name;
     }
