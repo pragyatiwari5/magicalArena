@@ -1,9 +1,9 @@
 package magicalArena;
+
 import java.util.Random;
 
 
 class Player {
-
     private int health;
     private int strength;
     private int attack;
@@ -24,7 +24,7 @@ class Player {
     public boolean isAlive() {
         return health > 0;
     }
-    
+
     void rollDice() {
         diceOutput = new Random().nextInt(6) + 1;
     }
@@ -41,10 +41,10 @@ class Player {
 
     public void takeDamage(int damage) {
         health -= damage;
-        if(health <0) health = 0;
+        if (health < 0) health = 0;
     }
-    
-    public String toString() { 
-    return this.name;
-} 
+
+    public String toString() {
+        return this.name;
+    }
 }

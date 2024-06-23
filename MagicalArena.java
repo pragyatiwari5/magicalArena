@@ -4,29 +4,26 @@ class MagicalArena {
     private Player winner;
 
     public void findWinner(Player player1, Player player2) {
-            
-            Player attacker = player1.getHealth() <= player2.getHealth() ? player1 : player2;
-            Player defender = player1.getHealth() > player2.getHealth() ? player1 : player2;
-
-            winner = battle(attacker, defender);
-            System.out.println("*** Winner is : "+winner.toString()+ " ***");
+        Player attacker = player1.getHealth() <= player2.getHealth() ? player1 : player2;
+        Player defender = player1.getHealth() > player2.getHealth() ? player1 : player2;
+        winner = battle(attacker, defender);
+        System.out.println("*** Winner is : " + winner.toString() + " ***");
     }
 
-    Player battle(Player attacker, Player defender){
+    Player battle(Player attacker, Player defender) {
         while (attacker.isAlive() && defender.isAlive()) {
             attacker.rollDice();
             defender.rollDice();
             int damage = attacker.damageCreated() - defender.damageDefended();
-            if(damage>0){
-            defender.takeDamage(damage);
-            System.out.println(defender + " health reduced by " + damage + " to " + defender.getHealth());
+            if (damage > 0) {
+                defender.takeDamage(damage);
+                System.out.println(defender + " health reduced by " + damage + " to " + defender.getHealth());
             }
-               Player temp = attacker;
-        attacker = defender;
-        defender = temp;
+            Player temp = attacker;
+            attacker = defender;
+            defender = temp;
         }
-        if(attacker.isAlive()) return attacker;
+        if (attacker.isAlive()) return attacker;
         else return defender;
     }
-
 }
