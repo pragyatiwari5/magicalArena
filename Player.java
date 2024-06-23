@@ -20,6 +20,22 @@ class Player {
     public int getHealth() {
         return health;
     }
+    
+    public int getStrength() {
+        return strength;
+    }
+    
+    public int getAttack() {
+        return attack;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getDiceOutput(){
+        return diceOutput;
+    }
 
     public boolean isAlive() {
         return health > 0;
