@@ -14,7 +14,7 @@ public class MagicalArenaTest {
         arena.startCombat(player1, player2);
         Player winner = arena.getWinner();
         assert (winner == player1 || winner == player2) : "No winner found";
-        System.out.println("Magical Arena start combat test passed");
+        System.out.println("Magical Arena start combat test passed.");
     }
 
     public static void testFindWinner() {
