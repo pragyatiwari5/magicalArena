@@ -9,7 +9,7 @@ class MagicalArena {
             Player defender = player1.getHealth() > player2.getHealth() ? player1 : player2;
 
             winner = battle(attacker, defender);
-            System.out.println("Winner is : "+winner.toString());
+            System.out.println("*** Winner is : "+winner.toString()+ " ***");
     }
 
     Player battle(Player attacker, Player defender){
@@ -17,17 +17,16 @@ class MagicalArena {
             attacker.rollDice();
             defender.rollDice();
             int damage = attacker.damageCreated() - defender.damageDefended();
+            if(damage>0){
             defender.takeDamage(damage);
             System.out.println(defender + " health reduced by " + damage + " to " + defender.getHealth());
-            swap(attacker, defender);
+            }
+               Player temp = attacker;
+        attacker = defender;
+        defender = temp;
         }
         if(attacker.isAlive()) return attacker;
         else return defender;
     }
 
-    void swap(Player p1, Player p2) {
-        Player temp = p1;
-        p1 = p2;
-        p2 = temp;
-    }
 }
