@@ -101,6 +101,5 @@ Here's a snippet to demonstrate how players can be initialized and combat can be
 
 This program is developed by Pragya Tiwari 
 </br>email : tiwaripragya3759@gmail.com
-</br>Phone : 9098367114
 
 
